@@ -120,26 +120,58 @@
       border-radius: 12px;
     }
 
-    .slider-btns {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 5px;
-    }
+/* dot loader bar */
+.slider-btns{
+  position:absolute;
+  bottom:9px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,0.25);
+  padding:6px 10px;
+  border-radius:18px;
+  display:flex;
+  gap:7px;
+}
 
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: #ccc;
-      border-radius: 50%;
-    }
+.dot{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#000;
+  opacity:0.4;
+  position:relative;
+  overflow:hidden;
+}
 
-    .dot.active {
-      background: #000;
-    }
+.dot.active{
+  width:10px;
+  border-radius:5px;
+  background:rgba(255,255,255,0.3);
+}
 
+.dot.active::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  height:100%;
+  width:0%;
+  background:#fff;
+  border-radius:10px;
+  animation:progress 4s linear forwards;
+}
+
+@keyframes progress{
+  from{width:0%;}
+  to{width:100%;}
+}
+
+/* mobile height adjustment */
+@media (min-width:600px){
+  .slide{
+    height:280px;
+  }
+}
     /* Offer Info Bar */
     .offer-bar {
       display: flex;
@@ -704,7 +736,8 @@ setInterval(createSnowflake, SNOW_INTERVAL);
          onclick="window.location.href='https://dhamaka-sale-is-live.pages.dev/'"></div>
   </div>
 
-  <div class="slider-btns" id="dots"></div>
+
+   <div class="slider-btns" id="dots"></div>
 </div>
 
 
